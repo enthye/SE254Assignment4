@@ -19,14 +19,13 @@ public class ExtractorTemplate
   protected final String TEXT_2 = " {" + NL + "\t";
   protected final String TEXT_3 = "protected ";
   protected final String TEXT_4 = " ";
-  protected final String TEXT_5 = ";" + NL + "\t\t\t\t";
+  protected final String TEXT_5 = ";" + NL + "\t";
   protected final String TEXT_6 = NL + "} " + NL + "" + NL + "public class ";
   protected final String TEXT_7 = " extends ";
   protected final String TEXT_8 = "  {" + NL + "\t";
   protected final String TEXT_9 = "private ";
-  protected final String TEXT_10 = ";" + NL + "\t";
-  protected final String TEXT_11 = NL + "}" + NL + "" + NL + "public class ";
-  protected final String TEXT_12 = NL + "}";
+  protected final String TEXT_10 = NL + "}" + NL + "" + NL + "public class ";
+  protected final String TEXT_11 = NL + "}";
 
   public String generate(Object argument)
   {
@@ -48,8 +47,7 @@ public class ExtractorTemplate
     stringBuffer.append(TEXT_4);
     stringBuffer.append(fa.getName());
     stringBuffer.append(TEXT_5);
-    
-				list.add(fa.getName());
+    list.add(fa.getName());
 			}
 		 }
 	} 
@@ -64,10 +62,10 @@ public class ExtractorTemplate
     stringBuffer.append(fa.getType());
     stringBuffer.append(TEXT_4);
     stringBuffer.append(fa.getName());
-    stringBuffer.append(TEXT_10);
+    stringBuffer.append(TEXT_5);
     }
 	}
-    stringBuffer.append(TEXT_11);
+    stringBuffer.append(TEXT_10);
     stringBuffer.append(b.getSimpleName());
     stringBuffer.append(TEXT_7);
     stringBuffer.append(c.getDeclaredField("className").get(argument));
@@ -78,10 +76,10 @@ public class ExtractorTemplate
     stringBuffer.append(fb.getType());
     stringBuffer.append(TEXT_4);
     stringBuffer.append(fb.getName());
-    stringBuffer.append(TEXT_10);
+    stringBuffer.append(TEXT_5);
     }
 	}
-    stringBuffer.append(TEXT_12);
+    stringBuffer.append(TEXT_11);
      } catch (Exception e) {}
     return stringBuffer.toString();
   }

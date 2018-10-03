@@ -10,8 +10,7 @@ public class <%=c.getDeclaredField("className").get(argument)%> {
 		for (Field fb : b.getFields()) {
 			if (fa.getType().equals(fb.getType()) && fa.getName().equals(fb.getName())) {
 				%>protected <%=fa.getType()%> <%=fa.getName()%>;
-				<%
-				list.add(fa.getName());
+	<%list.add(fa.getName());
 			}
 		 }
 	} %>
