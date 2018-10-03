@@ -1,2 +1,33 @@
-<%@ jet package="se254.a4.q3" class="ExtractorTemplate" %>
-// Your code goes here!
+<%@ jet package="se254.a4.q3" class="ExtractorTemplate" imports="java.lang.reflect.* java.util.*"%>
+<% try { %>
+<% Class<?> c = (Class<?>) argument.getClass(); 
+	Class<?> a = (Class<?>) c.getDeclaredField("a").get(argument); 
+	Class<?> b = (Class<?>) c.getDeclaredField("b").get(argument); 
+	List<String> list = new ArrayList<>();%>
+	
+public class <%=c.getDeclaredField("className").get(argument)%> {
+	<% for (Field fa : a.getFields()) { 
+		for (Field fb : b.getFields()) {
+			if (fa.getType().equals(fb.getType()) && fa.getName().equals(fb.getName())) {
+				%>protected <%=fa.getType()%> <%=fa.getName()%>;
+				<%
+				list.add(fa.getName());
+			}
+		 }
+	} %>
+} 
+
+public class <%=a.getSimpleName()%> extends <%=c.getDeclaredField("className").get(argument)%>  {
+	<% for (Field fa : a.getFields()) { 
+		if (!list.contains(fa.getName())) {%>private <%=fa.getType()%> <%=fa.getName()%>;
+	<%}
+	}%>
+}
+
+public class <%=b.getSimpleName()%> extends <%=c.getDeclaredField("className").get(argument)%> {
+	<% for (Field fb : b.getFields()) {
+	if (!list.contains(fb.getName())) {%>private <%=fb.getType()%> <%=fb.getName()%>;
+	<%}
+	}%>
+}
+<% } catch (Exception e) {}%>

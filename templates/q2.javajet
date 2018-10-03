@@ -1,5 +1,5 @@
 <%@ jet package="se254.a4.q2" class="UnitTestTemplate" imports="java.lang.reflect.*" %>
-<% Class c = (Class) argument; %>
+<% Class<?> c = (Class<?>) argument; %>
 import static org.junit.Assert.*;
 import org.junit.Test;
 

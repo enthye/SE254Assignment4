@@ -23,7 +23,7 @@ public class UnitTestTemplate
   public String generate(Object argument)
   {
     final StringBuffer stringBuffer = new StringBuffer();
-     Class c = (Class) argument; 
+     Class<?> c = (Class<?>) argument; 
     stringBuffer.append(TEXT_1);
     stringBuffer.append(c.getSimpleName());
     stringBuffer.append(TEXT_2);
