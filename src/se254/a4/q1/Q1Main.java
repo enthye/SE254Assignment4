@@ -57,7 +57,6 @@ public class Q1Main {
 		}
 	}
 
-
 	// loads class of given name
 	private static Class<?> initClass(String className) throws Exception, NoClassDefFoundError {
 		ClassLoader cl = Q1Main.class.getClassLoader();
