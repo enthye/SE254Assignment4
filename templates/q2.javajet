@@ -1,12 +1,15 @@
-<%@ jet package="se254.a4.q2" class="UnitTestTemplate" imports="java.lang.reflect.*" %>
+<%@ jet package="se254.a4.q2" class="UnitTestTemplate" imports="java.lang.reflect.* java.util.*" %>
 <% Class<?> c = (Class<?>) argument; %>
+<% HashSet<String> methodNames = new HashSet<>(); %>
 import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class <%=c.getSimpleName()%>Test {
-<% for(Method m : c.getDeclaredMethods()) { %>
+<% for(Method m : c.getDeclaredMethods()) { 
+	if (!methodNames.contains(m.getName())) { 
+		methodNames.add(m.getName());%>
 	@Test
 	public void test<%=m.getName().substring(0,1).toUpperCase() + m.getName().substring(1) %>() {
 		fail("Not yet implemented");
-	}	<%}%>
+	}	<%}}%>
 }

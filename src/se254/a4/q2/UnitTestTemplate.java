@@ -1,6 +1,7 @@
 package se254.a4.q2;
 
 import java.lang.reflect.*;
+import java.util.*;
 
 public class UnitTestTemplate
 {
@@ -24,14 +25,17 @@ public class UnitTestTemplate
   {
     final StringBuffer stringBuffer = new StringBuffer();
      Class<?> c = (Class<?>) argument; 
+     HashSet<String> methodNames = new HashSet<>(); 
     stringBuffer.append(TEXT_1);
     stringBuffer.append(c.getSimpleName());
     stringBuffer.append(TEXT_2);
      for(Method m : c.getDeclaredMethods()) { 
+	if (!methodNames.contains(m.getName())) { 
+		methodNames.add(m.getName());
     stringBuffer.append(TEXT_3);
     stringBuffer.append(m.getName().substring(0,1).toUpperCase() + m.getName().substring(1) );
     stringBuffer.append(TEXT_4);
-    }
+    }}
     stringBuffer.append(TEXT_5);
     return stringBuffer.toString();
   }
